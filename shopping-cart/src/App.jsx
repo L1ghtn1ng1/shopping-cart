@@ -7,11 +7,17 @@ import { Outlet } from 'react-router-dom'
 function App() {
   const [items, setItems] = useState([])
   const [cartItems, setCartItems] = useState([])
+  const [quantities, setQuantities] = useState([])
+
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products?limit=10/category/snowboarding')
+    fetch('https://fakestoreapi.com/products?limit=3')
             .then(res=>res.json())
             .then((data)=>{setItems(data)})
   }, [])
+
+  useEffect(() => {
+    console.log(quantities)
+  }, [quantities])
 
   function addToCart(item, amount = 1) {
    
@@ -33,10 +39,16 @@ function App() {
   } 
 
 
+  function updateQuantity(item,amount) {
+    const newQuantities = { ...quantities };
+    newQuantities[item.id] = parseInt(amount, 10) || 1;
+    setQuantities(newQuantities);
+  }
+
   return (
     <>
       <Header cartItems={cartItems} />
-      <Outlet context={{items, addToCart, cartItems, deleteItem}} />
+      <Outlet context={{items, addToCart, cartItems, deleteItem, updateQuantity}} />
       <Footer /> 
     </>
   )

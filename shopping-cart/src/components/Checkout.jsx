@@ -3,39 +3,51 @@ import "../Styles/Checkout.css";
 
 function Checkout() {
   const { cartItems, deleteItem } = useOutletContext();
+  const totalCost = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const gst = 0.15 * totalCost;
 
   return (
-    <div className="checkout">
-      <div className="checkout-header">
-        <h1>Checkout</h1>
-      </div>
-      <div className="checkout-details">
-        <div className="checkout-details-left">
+    <div className="checkout-container">
+      <h2>Cart Summary</h2>
+      <div className="checkout">
+        <div className="leftSide">
           {cartItems.map((item) => (
             <div key={item.id} className="checkout-item">
-              <div className="checkout-item-left">
+              <div className="photo-title">
+                <img src={item.image} alt="" />
                 <p>{item.title}</p>
               </div>
-              <div className="checkout-item-right">
-                <img src={item.image} alt="" />
-                <h3>${item.price * item.quantity}</h3>
+              <div className="quantity">
+                <button>-</button>
+                <h3>{item.quantity}</h3>
+                <button>+</button>
               </div>
-              <button className="delete" onClick={() => deleteItem(item)}>
-                X
-              </button>
+              <div className="priceDelete">
+                <h3>${item.price*item.quantity}</h3>
+                <button className="delete" onClick={() => deleteItem(item)}>
+                  X
+                </button>
+              </div>
             </div>
           ))}
         </div>
-
-        <div className="checkout-details-right">
-          <h2>
-            Total: $
-            {cartItems.reduce(
-              (acc, item) => acc + item.price * item.quantity,
-              0
-            )}
-          </h2>
-          <button>Checkout</button>
+        <div className="rightSide">
+          <div className="right">
+            <h2>Order Summary</h2>
+            <div className="order-summary">
+              <p>Subtotal</p>
+              <p>${totalCost.toFixed(2)}</p>
+            </div>
+            <div className="order-summary">
+              <p>GST (15%)</p>
+              <p>{(gst).toFixed(2)}</p>
+            </div>
+            <div className="order-summary">
+              <p>Total</p>
+              <p>${(totalCost+gst).toFixed(2)}</p>
+            </div>
+            <button>Checkout</button>
+          </div>
         </div>
       </div>
     </div>
