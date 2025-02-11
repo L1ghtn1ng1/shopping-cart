@@ -1,0 +1,57 @@
+.card img{
+    width: 40%;
+}
+.shop{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px,1fr));
+    justify-content: left;
+    padding: 0 100px 0 100px; 
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 500px;
+}
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+}   
+
+.shop-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 110px;
+    padding-left: 110px;
+}
+
+.filters{
+    display: flex;
+    justify-content: space-between;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout-details input{
+    width: 20%;
+    margin: 10px;
+}
+
+.checkout-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
