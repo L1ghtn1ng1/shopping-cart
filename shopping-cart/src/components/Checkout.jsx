@@ -2,10 +2,10 @@ import { useOutletContext } from "react-router-dom";
 import "../Styles/Checkout.css";
 
 function Checkout() {
-  const { cartItems, deleteItem } = useOutletContext();
+  const { cartItems, deleteItem, addToCart } = useOutletContext();
   const totalCost = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const gst = 0.15 * totalCost;
-
+  
   return (
     <div className="checkout-container">
       <h2>Cart Summary</h2>
@@ -18,9 +18,9 @@ function Checkout() {
                 <p>{item.title}</p>
               </div>
               <div className="quantity">
-                <button>-</button>
+                <button onClick={() => item.quantity > 1 && addToCart(item,1,false)}>-</button>
                 <h3>{item.quantity}</h3>
-                <button>+</button>
+                <button onClick={() => addToCart(item)}>+</button>
               </div>
               <div className="priceDelete">
                 <h3>${item.price*item.quantity}</h3>

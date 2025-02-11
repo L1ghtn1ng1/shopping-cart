@@ -19,14 +19,18 @@ function App() {
     console.log(quantities)
   }, [quantities])
 
-  function addToCart(item, amount = 1) {
+  function addToCart(item, amount = 1, increment = true) {
    
     const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
   
     if (existingItemIndex !== -1) {
 
       const updatedCartItems = [...cartItems];
-      updatedCartItems[existingItemIndex].quantity += amount; 
+      if (increment){
+        updatedCartItems[existingItemIndex].quantity += amount;
+      } else {
+        updatedCartItems[existingItemIndex].quantity -= 1;
+      }
       setCartItems(updatedCartItems);
     } else {
       const newItem = { ...item, quantity: amount };
@@ -48,7 +52,7 @@ function App() {
   return (
     <>
       <Header cartItems={cartItems} />
-      <Outlet context={{items, addToCart, cartItems, deleteItem, updateQuantity}} />
+      <Outlet context={{items, addToCart, cartItems, deleteItem, quantities, updateQuantity}} />
       <Footer /> 
     </>
   )
