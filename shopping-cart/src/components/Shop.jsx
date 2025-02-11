@@ -1,18 +1,11 @@
-import { useOutletContext } from "react-router-dom";
+import {useNavigate, useOutletContext } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../Styles/Shop.css";
-import { useState } from "react";
+// import { useState } from "react";
 
 function Shop() {
-  const { items, addToCart } = useOutletContext();
-  const [quantities, setQuantities] = useState({});
-
-
-  const handleQuantity = (e, item) => {
-    const newQuantities = { ...quantities }; 
-    newQuantities[item.id] = parseInt(e.target.value, 10) || 1;
-    setQuantities(newQuantities); 
-  };
+  const { items, addToCart} = useOutletContext();
+  const Navigate = useNavigate();
 
   return (
     <div>
@@ -26,14 +19,15 @@ function Shop() {
 
       <div className="shop">
         {items.map((item) => (
-          <div key={item.id} className="card">
+          <div key={item.id} className="card" 
+            onClick={() => Navigate(`/item/${item.id}`)}>
             <div className="title">{item.title}</div>
-            <img src={item.image} alt="" />
+            <img src={item.image} alt="" />  
             <div className="info">
               <p>${item.price}</p>
               <div className="checkout-details">
-                <input type="number" placeholder="1" min={1} max={15} onClick={(e) => handleQuantity(e,item)}/>
-                <button onClick={() => addToCart(item,quantities[item.id])}>Add To Cart</button>
+                {/* <input type="number" placeholder="1" min={1} max={15} onClick={(e) => handleQuantity(e,item)}/> */}
+                <button onClick={(e) => { e.stopPropagation(); addToCart(item);}}>Add To Cart</button>
               </div>
             </div>
           </div>

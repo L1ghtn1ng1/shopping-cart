@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Home from './components/Home.jsx'
 import Shop from './components/Shop.jsx'
 import Checkout from './components/Checkout.jsx'
+import ItemPage from './components/ItemPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "home", element: <Home />},
       { path: "shop", element: <Shop />},
       { path: "checkout", element: <Checkout />}, 
+      { path: "item/:id", element: <ItemPage />},
     ],
   }
 ]);
