@@ -11,8 +11,19 @@ function App() {
   useEffect(() => {
     fetch('https://fakestoreapi.com/products?limit=20')
             .then(res=>res.json())
-            .then((data)=>{setItems(data)})
-  }, [])
+            .then((data)=>{
+              // Add a new attribute to each item
+              const updatedData = data.map(item => ({
+                ...item,
+                quantity: 1  // Change this as needed
+              }));
+              setItems(updatedData);
+            });
+        }, []);
+
+  useEffect(() => {
+    console.log(items)
+  }, [items])
 
 
   function addToCart(item, amount = 1, increment = true) {

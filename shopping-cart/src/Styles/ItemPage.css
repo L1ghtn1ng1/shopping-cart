@@ -1,0 +1,46 @@
+.item-page img{
+    width: 15%;
+    height: 15%;
+}
+
+.item-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.buy{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.loading-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    height: 50vh;
+}
+  
