@@ -2,7 +2,6 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../Styles/Shop.css";
 import { useState, useEffect } from "react";
-
 function Shop() {
   const { items, addToCart } = useOutletContext();
   const Navigate = useNavigate();
@@ -13,21 +12,29 @@ function Shop() {
     jewelery: false,
     technology: false,
   });
-
+  const [search, setSearch] = useState(""); 
   const [filteredItems, setFilteredItems] = useState([]);
+
   useEffect(() => {
     let filtered = items.filter((item) => {
-      if (filter.mensClothing && item.category === "men's clothing") return true;
-      if (filter.womensClothing && item.category === "women's clothing") return true;
-      if (filter.jewelry && item.category === "jewelery") return true;
-      if (filter.technology && item.category === "electronics") return true;
-      return Object.values(filter).every((val) => !val); // Show all if no filter is selected
+      const matchesCategory =
+        (filter.mensClothing && item.category === "men's clothing") ||
+        (filter.womensClothing && item.category === "women's clothing") ||
+        (filter.jewelry && item.category === "jewelery") ||
+        (filter.technology && item.category === "electronics") ||
+        Object.values(filter).every((val) => !val); 
+
+      const matchesSearch = item.title.toLowerCase().includes(search.toLowerCase());
+
+      return matchesCategory && matchesSearch;
     });
-  
+
     setFilteredItems(filtered);
-  }, [filter, items]); // Re-run when filter or items change
+  }, [filter, search, items]); 
   
-  
+  useEffect(() => {
+    setFilteredItems(items.filter(item => item.title.toLowerCase().includes(search.toLowerCase())));
+  }, [search, items]);
 
   function filterItems(e) {
     const { name, checked } = e.target;
@@ -43,6 +50,9 @@ function Shop() {
           <button onClick={() => setIsOpen(!isOpen)} className="filter-button">
             Filters
           </button>
+        </div>
+        <div>
+          <input type="text" onChange={(e) => setSearch(e.target.value)} />
         </div>
       </div>
 
