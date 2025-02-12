@@ -3,7 +3,7 @@
 }
 .shop{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(450px,1fr));
     justify-content: left;
     padding: 0 100px 0 100px; 
 }
@@ -55,3 +55,65 @@
     justify-content: center;
     align-items: center;
 }
+
+
+/* Container to control both sidebar and content */
+.container {
+    display: flex;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  
+  /* Sidebar Styling */
+  .sidebar {
+    width: 0; /* Starts collapsed */
+    overflow: hidden;
+    background: lightgray;
+    padding: 0;
+    transition: width 0.3s ease-in-out;
+    height: 500px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  /* Sidebar Open */
+  .sidebar.open {
+    width: 250px; /* Slide in */
+    margin-left: 30px;
+  }
+  
+  /* Main Content */
+  .shop {
+    flex: 1;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  /* Close Button */
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    left: 260px;
+  }
+  
+  /* Filter Button */
+  .filter-button {
+    padding: 10px 15px;
+    background: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .filter-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
