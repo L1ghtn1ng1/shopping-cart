@@ -1,4 +1,4 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../Styles/Shop.css";
 import { useState, useEffect } from "react";
@@ -12,29 +12,43 @@ function Shop() {
     jewelery: false,
     technology: false,
   });
-  const [search, setSearch] = useState(""); 
+  const [search, setSearch] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
+
+  const from = useLocation().state?.from;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);  // Scrolls to the top of the page
+  }, []);
+
+  useEffect(() => {
+    if (from) {
+      setFilter((prevFilter) => ({
+        ...prevFilter,
+        [from]: true,
+      }));
+    }
+  }, [from]);
+  
 
   useEffect(() => {
     let filtered = items.filter((item) => {
       const matchesCategory =
         (filter.mensClothing && item.category === "men's clothing") ||
         (filter.womensClothing && item.category === "women's clothing") ||
-        (filter.jewelry && item.category === "jewelery") ||
+        (filter.jewelery && item.category === "jewelery") ||
         (filter.technology && item.category === "electronics") ||
-        Object.values(filter).every((val) => !val); 
+        Object.values(filter).every((val) => !val);
 
-      const matchesSearch = item.title.toLowerCase().includes(search.toLowerCase());
+      const matchesSearch = item.title
+        .toLowerCase()
+        .includes(search.toLowerCase());
 
       return matchesCategory && matchesSearch;
     });
 
     setFilteredItems(filtered);
-  }, [filter, search, items]); 
-  
-  useEffect(() => {
-    setFilteredItems(items.filter(item => item.title.toLowerCase().includes(search.toLowerCase())));
-  }, [search, items]);
+  }, [filter, search, items, from]);
 
   function filterItems(e) {
     const { name, checked } = e.target;
@@ -64,19 +78,29 @@ function Shop() {
           <h2>Filter</h2>
           <form className="filter-form">
             <label>
-              <input type="checkbox" name="mensClothing" onChange={filterItems}/>
+              <input
+                type="checkbox"
+                name="mensClothing"
+                onChange={filterItems}
+                checked={filter.mensClothing}
+              />
               Men`s Clothing
             </label>
             <label>
-              <input type="checkbox" name="womensClothing" onChange={filterItems}/>
+              <input
+                type="checkbox"
+                name="womensClothing"
+                onChange={filterItems}
+                checked={filter.womensClothing}
+              />
               Women`s Clothing
             </label>
             <label>
-              <input type="checkbox" name="jewelry" onChange={filterItems}/>
+              <input type="checkbox" name="jewelery" onChange={filterItems} checked = {filter.jewelery} />
               Jewelery
             </label>
             <label>
-              <input type="checkbox" name="technology" onChange={filterItems}/>
+              <input type="checkbox" name="technology" onChange={filterItems} checked={filter.technology} />
               Technology
             </label>
           </form>
