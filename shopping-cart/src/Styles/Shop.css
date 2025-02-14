@@ -39,6 +39,33 @@
     padding-left: 110px;
 }
 
+.left-shop-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.left-shop-info button{
+    padding: 10px;
+    background: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.right-shop-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.right-shop-info input{
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
 .filters{
     display: flex;
     justify-content: space-between;
@@ -49,6 +76,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+}
+
+.info p{
+    font-size: 1.2rem;
 }
 
 .checkout-details input{
@@ -74,7 +106,7 @@
   .sidebar {
     width: 0; /* Starts collapsed */
     overflow: hidden;
-    background: lightgray;
+    background: #f1f1f1;
     padding: 0;
     transition: width 0.3s ease-in-out;
     height: 250px;
@@ -83,12 +115,14 @@
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    margin-right: -40px;
   }
   
   /* Sidebar Open */
   .sidebar.open {
     width: 250px; /* Slide in */
     margin-left: 30px;
+    margin-right: -40px;
   }
   
   /* Main Content */
@@ -122,4 +156,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    gap: 10px;
+  }
+
+  .buy-Btn{
+    padding: 10px;
+    background: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
   }

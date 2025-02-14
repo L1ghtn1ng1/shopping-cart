@@ -18,7 +18,7 @@ function Shop() {
   const from = useLocation().state?.from;
 
   useEffect(() => {
-    window.scrollTo(0, 0);  // Scrolls to the top of the page
+    window.scrollTo(0, 0); // Scrolls to the top of the page
   }, []);
 
   useEffect(() => {
@@ -29,7 +29,6 @@ function Shop() {
       }));
     }
   }, [from]);
-  
 
   useEffect(() => {
     let filtered = items.filter((item) => {
@@ -58,15 +57,16 @@ function Shop() {
   return (
     <div>
       <div className="shop-info">
-        <div>
+        <div className="left-shop-info">
           <h1>Products</h1>
-          <p>Items ({items.length})</p>
+          <h4>Items ({items.length})</h4>
           <button onClick={() => setIsOpen(!isOpen)} className="filter-button">
             Filters
           </button>
         </div>
-        <div>
-          <input type="text" onChange={(e) => setSearch(e.target.value)} />
+        <div className="right-shop-info">
+          <label htmlFor = "search">Search</label>
+          <input id="search" type="text" onChange={(e) => setSearch(e.target.value)} />
         </div>
       </div>
 
@@ -84,7 +84,7 @@ function Shop() {
                 onChange={filterItems}
                 checked={filter.mensClothing}
               />
-              Men`s Clothing
+              Men&apos;s Clothing
             </label>
             <label>
               <input
@@ -93,14 +93,24 @@ function Shop() {
                 onChange={filterItems}
                 checked={filter.womensClothing}
               />
-              Women`s Clothing
+              Women&apos;s Clothing
             </label>
             <label>
-              <input type="checkbox" name="jewelery" onChange={filterItems} checked = {filter.jewelery} />
+              <input
+                type="checkbox"
+                name="jewelery"
+                onChange={filterItems}
+                checked={filter.jewelery}
+              />
               Jewelery
             </label>
             <label>
-              <input type="checkbox" name="technology" onChange={filterItems} checked={filter.technology} />
+              <input
+                type="checkbox"
+                name="technology"
+                onChange={filterItems}
+                checked={filter.technology}
+              />
               Technology
             </label>
           </form>
@@ -118,7 +128,7 @@ function Shop() {
               <div className="info">
                 <p>${item.price}</p>
                 <div className="checkout-details">
-                  <button
+                  <button className="buy-Btn"
                     onClick={(e) => {
                       e.stopPropagation();
                       addToCart(item);
