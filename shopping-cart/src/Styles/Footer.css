@@ -4,7 +4,8 @@
     align-items: center;
     background-color: antiquewhite;
     padding: 50px;
-
+    border-top: 2px solid black;
+    margin: 10px 0;
 }
 
 .footer-container div{

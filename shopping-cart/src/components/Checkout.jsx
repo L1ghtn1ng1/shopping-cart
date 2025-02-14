@@ -8,7 +8,7 @@ function Checkout() {
   
   return (
     <div className="checkout-container">
-      <h2>Cart Summary</h2>
+      <h2>Cart Summary:</h2>
       <div className="checkout">
         <div className="leftSide">
           {cartItems.map((item) => (
@@ -33,7 +33,7 @@ function Checkout() {
         </div>
         <div className="rightSide">
           <div className="right">
-            <h2>Order Summary</h2>
+            <h2>Order Summary:</h2>
             <div className="order-summary">
               <p>Subtotal</p>
               <p>${totalCost.toFixed(2)}</p>

@@ -63,7 +63,7 @@
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.1);
     width: 50%;
     min-width: 250px;
-
+    gap: 20px;
 }
 .right button{
     width: 100%;
