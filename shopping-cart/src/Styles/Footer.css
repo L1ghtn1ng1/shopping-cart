@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: antiquewhite
+    background-color: antiquewhite;
+    padding: 50px;
 
 }
 

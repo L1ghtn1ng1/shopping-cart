@@ -23,8 +23,9 @@ function Header({cartItems}) {
         </Link>
       </div>
       <div className="right-header">
-        <Link to="checkout">Cart:</Link> 
-        <h1>{totalItems}</h1>
+        <Link to="checkout">
+        <button>Cart:</button></Link> 
+        <p>{totalItems}</p>
       </div>
     </div>
   );

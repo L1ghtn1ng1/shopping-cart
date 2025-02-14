@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
   background-color: #f8f8f8;
   border-bottom: 1px solid lightgray;
 }
@@ -17,6 +17,11 @@
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.right-header a{
+  text-decoration: none;
+  color: #000;
 }
 
 .header button {
@@ -39,6 +44,25 @@
   transition: width 0.3s ease;
 }
 
+.right-header button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
 .header button:hover::after {
   width: 100%;
+}
+
+.header button{
+  font-size: 1.5em ;
+}
+
+.right-header p{
+  font-size: 1.5em;
 }

@@ -25,33 +25,33 @@ function Home() {
 
       <div className="products-by-filter">
         <div className="mens">
-          <Link to="/shop" state={{from: "mensClothing"}}>
+          <Link to="/shop" state={{from: "mensClothing"}} className="centre">
             <img src={mensImage} alt="" loading="lazy" />
-            <div className="title">
+            <div className="section-title">
                 <h2>Mens Clothing</h2>
             </div>
           </Link>  
         </div>
         <div className="womens">
-          <Link to="/shop" state={{from: "womensClothing"}}>
+          <Link to="/shop" state={{from: "womensClothing"}} className="centre">
             <img src={womensImage} alt="" loading="lazy" />
-            <div className="title">
+            <div className="section-title">
                 <h2>Womens Clothing</h2>
             </div>
           </Link>
         </div>
         <div className="jewelery">
-          <Link to="/shop" state={{from: "jewelery"}}>
+          <Link to="/shop" state={{from: "jewelery"}} className="centre">
             <img src={jeweleryImage} alt=""  loading="lazy"/>
-            <div className="title">
+            <div className="section-title">
                 <h2>Jewellery</h2>
             </div>
           </Link>
         </div>
         <div className="tech">
-          <Link to="/shop" state={{from: "technology"}}>
+          <Link to="/shop" state={{from: "technology"}} className="centre">
             <img src={techImage} alt=""  />
-            <div className="title">
+            <div className="section-title">
                 <h2>Technology</h2>
             </div>
           </Link>
