@@ -4,8 +4,17 @@
     box-sizing: border-box;
 }
 
+button:active {
+  transform: scale(0.8); 
+  transition: transform 0.3s;
+}
+
+button{
+  cursor: pointer;
+}
+
 .card img{
-    width: 40%;
+    width: 38%;
 }
 .shop{
     display: grid;

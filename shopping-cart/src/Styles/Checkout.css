@@ -76,3 +76,9 @@
     justify-content: end;
     align-items: center;
 }
+
+.delete {
+    background-color: rgb(255, 68, 68);
+    border: none;
+    border-radius: 5px;
+}
